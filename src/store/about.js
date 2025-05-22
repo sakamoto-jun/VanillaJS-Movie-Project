@@ -6,5 +6,5 @@ export default new Store({
   email:'sakamotojun.dev@gmail.com',
   blog: '',
   github: 'https://github.com/sakamoto-jun',
-  repository: ''
+  repository: 'https://github.com/sakamoto-jun/VanillaJS-Movie-Project'
 });
