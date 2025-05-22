@@ -4,13 +4,19 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./index.html",
-    "build": "parcel build ./index.html"
+    "build": "parcel build ./index.html",
+    "vercel": "vercel dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "parcel": "^2.15.0"
+    "dotenv": "^16.5.0",
+    "parcel": "^2.15.0",
+    "vercel": "^42.1.1"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
   }
 }
