@@ -12,12 +12,18 @@ export default class Search extends Component {
     `;
 
     const inputEl = this.el.querySelector('input');
+    let isSearching = false;
     inputEl.addEventListener('input', (e) => {
       movieStore.state.searchText = e.target.value;
     });
     inputEl.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' && movieStore.state.searchText.trim()) {
-        searchMovies(1);
+      if(e.key === 'Enter'
+        && movieStore.state.searchText.trim()
+        && !isSearching) {
+        isSearching = true;
+        searchMovies(1).finally(() => {
+          isSearching = false;
+        });
       }
     });
 
