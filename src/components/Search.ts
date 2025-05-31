@@ -11,10 +11,10 @@ export default class Search extends Component {
       <button class="btn btn-primary">검색</button>
     `;
 
-    const inputEl = this.el.querySelector('input');
+    const inputEl = this.el.querySelector('input') as HTMLInputElement;
     let isSearching = false;
-    inputEl.addEventListener('input', (e) => {
-      movieStore.state.searchText = e.target.value;
+    inputEl.addEventListener('input', () => {
+      movieStore.state.searchText = inputEl.value;
     });
     inputEl.addEventListener('keydown', (e) => {
       if(e.key === 'Enter'
@@ -27,7 +27,7 @@ export default class Search extends Component {
       }
     });
 
-    const btnEl = this.el.querySelector('button');
+    const btnEl = this.el.querySelector('button') as HTMLButtonElement;
     btnEl.addEventListener('click', () => {
       if (movieStore.state.searchText.trim()) {
         searchMovies(1);

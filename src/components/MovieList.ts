@@ -29,7 +29,7 @@ export default class MovieList extends Component {
       ...movieStore.state.movies.map(movie => new MovieItem({ movie }).el)
     );
 
-    const loaderEl = this.el.querySelector('.the-loader');
+    const loaderEl = this.el.querySelector('.the-loader') as HTMLDivElement; // 'the-loader'는 렌더과정에 무조건 있음
     movieStore.state.loading
       ? loaderEl.classList.remove('hide')
       : loaderEl.classList.add('hide');
