@@ -1,7 +1,15 @@
 import { Component } from '../core/common';
+import { SimpleMovie } from '../store/movie';
+
+interface Props {
+  [key: string]: unknown;
+  movie: SimpleMovie;
+}
 
 export default class MovieItem extends Component {
-  constructor(props) {
+  public props!: Props; // 할당 단언 "이게 맞아!"
+
+  constructor(props: Props) {
     super({
       tagName: 'a',
       props
