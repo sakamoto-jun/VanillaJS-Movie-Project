@@ -12,24 +12,21 @@ export default class Search extends Component {
     `;
 
     const inputEl = this.el.querySelector('input') as HTMLInputElement;
-    let isSearching = false;
     inputEl.addEventListener('input', () => {
       movieStore.state.searchText = inputEl.value;
     });
     inputEl.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter'
+      if (e.key === 'Enter'
         && movieStore.state.searchText.trim()
-        && !isSearching) {
-        isSearching = true;
-        searchMovies(1).finally(() => {
-          isSearching = false;
-        });
+        && !movieStore.state.loading) {
+        searchMovies(1);
       }
     });
 
     const btnEl = this.el.querySelector('button') as HTMLButtonElement;
     btnEl.addEventListener('click', () => {
-      if (movieStore.state.searchText.trim()) {
+      if (movieStore.state.searchText.trim()
+        && !movieStore.state.loading) {
         searchMovies(1);
       }
     });

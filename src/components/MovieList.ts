@@ -5,15 +5,9 @@ import MovieItem from './MovieItem';
 export default class MovieList extends Component {
   constructor() {
     super();
-    movieStore.subscribe('movies', () => {
-      this.render();
-    });
-    movieStore.subscribe('loading', () => {
-      this.render();
-    });
-    movieStore.subscribe('message', () => {
-      this.render();
-    });
+    movieStore.subscribe('movies', () => this.render());
+    movieStore.subscribe('loading', () => this.render());
+    movieStore.subscribe('message', () => this.render());
   }
   render() {
     this.el.classList.add('movie-list');
@@ -24,12 +18,12 @@ export default class MovieList extends Component {
       <div class="the-loader hide"></div>
     `;
 
-    const moviesEl = this.el.querySelector('.movies');
+    const moviesEl = this.el.querySelector<HTMLDivElement>('.movies');
     moviesEl?.append(
       ...movieStore.state.movies.map(movie => new MovieItem({ movie }).el)
     );
 
-    const loaderEl = this.el.querySelector('.the-loader') as HTMLDivElement; // 'the-loader'는 렌더과정에 무조건 있음
+    const loaderEl = this.el.querySelector('.the-loader') as HTMLDivElement;
     movieStore.state.loading
       ? loaderEl.classList.remove('hide')
       : loaderEl.classList.add('hide');
